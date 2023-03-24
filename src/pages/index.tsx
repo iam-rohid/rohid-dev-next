@@ -4,6 +4,7 @@ import TwitterIcon from "@/components/icons/TwitterIcon";
 import { TWITTER_HANDLE } from "@/data/constants";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
+import Head from "next/head";
 import Link from "next/link";
 import { useMemo } from "react";
 
@@ -20,6 +21,13 @@ const Home = () => {
 
   return (
     <main className="container mx-auto px-4 lg:px-8 xl:max-w-screen-xl">
+      <Head>
+        <title>Rohid</title>
+        <meta
+          name="description"
+          content="A self-thought full-stack developer who likes build modern and beautiful stuffs on the internet"
+        />
+      </Head>
       <section className="py-16 flex items-center gap-20 max-lg:flex-col-reverse lg:my-24 lg:justify-between lg:gap-32">
         <div className="max-w-2xl flex-1 max-lg:text-center">
           <div className="prose-xl prose dark:prose-invert">
@@ -35,7 +43,7 @@ const Home = () => {
           <div className="mt-6 flex items-center gap-8 max-lg:justify-center md:mt-8">
             <Link
               href="/contact"
-              className="rounded-lg bg-primary-500 px-6 py-3 font-medium text-white shadow-xl shadow-primary-500/20 transition-all hover:shadow-sm duration-300"
+              className="rounded-xl text-lg bg-primary-500 hover:bg-primary-600 px-6 py-3 font-medium text-white transition-all hover:shadow-sm duration-300"
             >
               Get in Touch
             </Link>

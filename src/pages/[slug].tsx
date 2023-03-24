@@ -18,13 +18,11 @@ const Post: FC<Props> = ({ page: { title, description, body } }) => {
         <div className="my-16 flex lg:gap-8">
           <div className="flex-1 overflow-hidden">
             <div className="prose prose-lg overflow-hidden dark:prose-invert max-xl:max-w-none xl:mx-auto xl:px-8">
-              <MDXContent components={{}} />
+              <MDXContent />
             </div>
           </div>
-          {/* <TableOfContent client:idle headings={toc} slug={entry.slug} /> */}
         </div>
       </div>
-      {/* <BlogStats client:only slug={slug} title={title} description={description} /> */}
     </main>
   );
 };

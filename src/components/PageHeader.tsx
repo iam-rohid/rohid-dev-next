@@ -1,4 +1,4 @@
-import React from "react";
+import Head from "next/head";
 
 export type PageHeaderProps = {
   title: string;
@@ -9,6 +9,11 @@ export type PageHeaderProps = {
 const PageHeader = ({ title, description, category }: PageHeaderProps) => {
   return (
     <header className="my-12 md:my-16">
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+      </Head>
+
       {!!category && (
         <p className="mb-2 text-xl font-semibold text-primary-500 dark:text-primary-400 md:text-2xl">
           {category}
