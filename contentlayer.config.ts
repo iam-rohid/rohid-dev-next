@@ -1,10 +1,16 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import rehypeSlug from "rehype-slug";
+import rehypeToc from "@jsdevtools/rehype-toc";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
   filePathPattern: `posts/**/*.mdx`,
   contentType: "mdx",
   fields: {
+    slug: {
+      type: "string",
+      required: true,
+    },
     title: {
       type: "string",
       required: true,
@@ -22,27 +28,12 @@ export const Post = defineDocumentType(() => ({
       default: false,
     },
   },
-  computedFields: {
-    slug: {
-      type: "string",
-      resolve: (post) => {
-        const items = post._raw.flattenedPath.split("/");
-        const slug = items[items.length - 1];
-        return slug;
-      },
-    },
-    url: {
-      type: "string",
-      resolve: (post) => {
-        const items = post._raw.flattenedPath.split("/");
-        const slug = items[items.length - 1];
-        return `/blog/${slug}`;
-      },
-    },
-  },
 }));
 
 export default makeSource({
   contentDirPath: "src/content",
   documentTypes: [Post],
+  mdx: {
+    rehypePlugins: [rehypeSlug, rehypeToc],
+  },
 });

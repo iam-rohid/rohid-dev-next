@@ -8,7 +8,7 @@ const BlogCard = ({ post }: { post: Post }) => {
 
   return (
     <Link
-      href={post.url}
+      href={`/blog/${post.slug}`}
       className="flex flex-col rounded-xl border border-gray-900/10 p-6 hover:border-gray-900/20 dark:border-gray-50/10 dark:hover:border-gray-50/20"
     >
       {/* {
