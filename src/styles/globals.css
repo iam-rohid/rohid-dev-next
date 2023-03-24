@@ -13,3 +13,26 @@
 .dark {
   color-scheme: dark;
 }
+
+.table-wrapper table {
+  @apply m-0;
+}
+.table-wrapper {
+  @apply border rounded-lg;
+}
+.table-wrapper,
+.table-wrapper thead {
+  @apply border-gray-200 dark:border-gray-700;
+}
+
+.table-wrapper table th,
+.table-wrapper table td {
+  @apply px-4 py-3;
+}
+.table-wrapper tr {
+  @apply border-none;
+}
+
+.table-wrapper tr a p {
+  @apply m-0;
+}

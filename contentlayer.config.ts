@@ -29,6 +29,29 @@ export const Post = defineDocumentType(() => ({
     },
   },
 }));
+export const Page = defineDocumentType(() => ({
+  name: "Page",
+  filePathPattern: `pages/**/*.mdx`,
+  contentType: "mdx",
+  fields: {
+    slug: {
+      type: "string",
+      required: true,
+    },
+    title: {
+      type: "string",
+      required: true,
+    },
+    description: {
+      type: "string",
+      required: true,
+    },
+    isDraft: {
+      type: "boolean",
+      default: false,
+    },
+  },
+}));
 
 const customizeTOC = (toc: any): any => {
   try {
@@ -59,7 +82,7 @@ const customizeTOC = (toc: any): any => {
 
 export default makeSource({
   contentDirPath: "src/content",
-  documentTypes: [Post],
+  documentTypes: [Post, Page],
   mdx: {
     rehypePlugins: [rehypeSlug, [rehypeToc, { customizeTOC }]],
   },
