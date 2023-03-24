@@ -21,27 +21,21 @@ const Home = () => {
     <main className="container mx-auto px-4 lg:px-8 xl:max-w-screen-xl">
       <section className="py-16 flex items-center gap-20 max-lg:flex-col-reverse lg:my-24 lg:justify-between lg:gap-32">
         <div className="max-w-2xl flex-1 max-lg:text-center">
-          <p className="mb-2 text-xl font-semibold text-gray-600 dark:text-gray-400 md:text-2xl">
-            Hi, 👋
-          </p>
-          <h1 className="text-5xl font-bold md:text-7xl">
-            I&apos;m <span className="underline">Rohid</span>
-          </h1>
-          <p className="mt-4 text-gray-600 dark:text-gray-400 md:text-lg">
-            a{" "}
-            <b className="font-semibold text-gray-800 dark:text-gray-100">
-              self-thought
-            </b>
-            <b className="font-semibold text-gray-800 dark:text-gray-100">
-              full-stack
-            </b>{" "}
-            developer who likes to build modern and useful stuff on the internet
-          </p>
+          <div className="prose-xl prose dark:prose-invert">
+            <h3>Hi, 👋</h3>
+            <h1>
+              I&apos;m <span className="underline">Rohid</span>
+            </h1>
+            <p>
+              a <b>self-thought</b> <b>full-stack</b> developer who likes build
+              modern and beautiful stuffs on the internet
+            </p>
+          </div>
           <div className="mt-6 flex items-center gap-8 max-lg:justify-center md:mt-8">
             <a
               href="/contact"
               rel="prefetch"
-              className="rounded-lg bg-primary-500 px-6 py-3 font-medium text-white shadow-xl shadow-primary-500/20 transition-all hover:bg-primary-600 hover:shadow-sm"
+              className="rounded-lg bg-primary-500 px-6 py-3 font-medium text-white shadow-xl shadow-primary-500/20 transition-all hover:shadow-sm duration-300"
             >
               Get in Touch
             </a>

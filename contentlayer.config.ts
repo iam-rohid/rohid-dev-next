@@ -30,10 +30,37 @@ export const Post = defineDocumentType(() => ({
   },
 }));
 
+const customizeTOC = (toc: any): any => {
+  try {
+    const { children } = toc;
+    const childrenOfChildren = children?.[0]?.children;
+    if (!children?.length || !childrenOfChildren?.length) return null;
+  } catch (e) {}
+  return {
+    type: "element",
+    tagName: "div",
+    properties: { className: "toc" },
+    children: [
+      {
+        type: "element",
+        tagName: "h3",
+        properties: { className: "title" },
+        children: [
+          {
+            type: "text",
+            value: "Table of Contents",
+          },
+        ],
+      },
+      ...(toc.children || []),
+    ],
+  };
+};
+
 export default makeSource({
   contentDirPath: "src/content",
   documentTypes: [Post],
   mdx: {
-    rehypePlugins: [rehypeSlug, rehypeToc],
+    rehypePlugins: [rehypeSlug, [rehypeToc, { customizeTOC }]],
   },
 });

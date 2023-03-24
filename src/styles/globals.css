@@ -1,0 +1,15 @@
+.toc {
+  @apply border border-gray-200 dark:border-gray-700 p-4 rounded-xl max-md:prose-base prose-a:no-underline;
+}
+
+.toc .title {
+  margin-top: 0;
+}
+
+.toc ol {
+  @apply m-0;
+}
+
+.dark {
+  color-scheme: dark;
+}
