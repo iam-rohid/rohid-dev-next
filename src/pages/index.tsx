@@ -3,6 +3,7 @@ import BlogCard from "@/components/BlogCard";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 import TwitterIcon from "@/components/icons/TwitterIcon";
 import { TWITTER_HANDLE } from "@/data/constants";
+import { trackLinkClick } from "@/utils/tracking";
 import { allPosts, Post } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import { GetStaticProps } from "next";
@@ -39,6 +40,7 @@ const Home: FC<Props> = ({ recentPosts }) => {
           <div className="mt-6 flex items-center gap-8 max-lg:justify-center md:mt-8">
             <Link
               href="/contact"
+              onClick={() => trackLinkClick("Get in Touch")}
               className="rounded-xl text-lg bg-primary-500 hover:bg-primary-600 px-6 py-3 font-medium text-white transition-all hover:shadow-sm duration-300"
             >
               Get in Touch
@@ -54,6 +56,7 @@ const Home: FC<Props> = ({ recentPosts }) => {
             />
 
             <Link
+              onClick={() => trackLinkClick("Twitter Follower Counter")}
               href={`https://twitter.com/${TWITTER_HANDLE}`}
               target="_blank"
               className="absolute top-full left-1/2 flex -translate-x-1/2 flex-col items-center"

@@ -1,3 +1,4 @@
+import { trackLinkClick } from "@/utils/tracking";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import Link from "next/link";
@@ -63,6 +64,7 @@ const Footer = () => {
                 <Link
                   target="_blank"
                   rel="nofollow"
+                  onClick={() => trackLinkClick("Footer Twitter")}
                   className="hover:text-gray-500 dark:hover:text-gray-400"
                   href="https://twitter.com/rohiddev"
                 >
@@ -71,6 +73,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  onClick={() => trackLinkClick("Footer Instagram")}
                   target="_blank"
                   rel="nofollow"
                   className="hover:text-gray-500 dark:hover:text-gray-400"

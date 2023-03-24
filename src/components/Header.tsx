@@ -1,4 +1,5 @@
 import { INSTAGRAM_HANDLE, MAIN_NEMU, TWITTER_HANDLE } from "@/data/constants";
+import { trackLinkClick } from "@/utils/tracking";
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";
 import HeaderVerticalSeparator from "./HeaderVerticalSeparator";
@@ -37,8 +38,10 @@ const Header = () => {
           <HeaderVerticalSeparator />
 
           <Link
+            onClick={() => trackLinkClick("Header Twitter")}
             href={`https://twitter.com/${TWITTER_HANDLE}`}
             target="_blank"
+            rel="nofollow"
             className="fill-gray-700 font-medium hover:fill-gray-500 dark:fill-gray-200 dark:hover:fill-gray-400 p-2 text-2xl"
             title="Go to Twitter"
           >
@@ -46,8 +49,10 @@ const Header = () => {
           </Link>
 
           <Link
+            onClick={() => trackLinkClick("Header Instagram")}
             href={`https://instagram.com/${INSTAGRAM_HANDLE}`}
             target="_blank"
+            rel="nofollow"
             className="fill-gray-700 font-medium hover:fill-gray-500 dark:fill-gray-200 dark:hover:fill-gray-400 p-2 text-2xl"
             title="Go to Instagram"
           >
