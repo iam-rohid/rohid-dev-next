@@ -12,7 +12,6 @@ const Header = () => {
       <div className="flex h-14 items-center gap-8 px-4 md:px-6 lg:px-8">
         <Link
           href="/"
-          rel="prefetch"
           className="text-2xl font-bold text-gray-800 hover:text-gray-500 dark:text-gray-100 dark:hover:text-gray-400"
         >
           Rohid

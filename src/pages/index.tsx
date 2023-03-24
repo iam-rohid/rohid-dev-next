@@ -4,6 +4,7 @@ import TwitterIcon from "@/components/icons/TwitterIcon";
 import { TWITTER_HANDLE } from "@/data/constants";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
+import Link from "next/link";
 import { useMemo } from "react";
 
 const Home = () => {
@@ -32,13 +33,12 @@ const Home = () => {
             </p>
           </div>
           <div className="mt-6 flex items-center gap-8 max-lg:justify-center md:mt-8">
-            <a
+            <Link
               href="/contact"
-              rel="prefetch"
               className="rounded-lg bg-primary-500 px-6 py-3 font-medium text-white shadow-xl shadow-primary-500/20 transition-all hover:shadow-sm duration-300"
             >
               Get in Touch
-            </a>
+            </Link>
           </div>
         </div>
         <div className="flex items-center justify-center">
@@ -49,7 +49,7 @@ const Home = () => {
               className="absolute inset-0 rounded-full object-cover"
             />
 
-            <a
+            <Link
               href={`https://twitter.com/${TWITTER_HANDLE}`}
               target="_blank"
               className="absolute top-full left-1/2 flex -translate-x-1/2 flex-col items-center"
@@ -59,7 +59,7 @@ const Home = () => {
                 <TwitterIcon className="text-xl fill-gray-600 dark:fill-gray-300" />
                 <span className="whitespace-nowrap text-sm">54 Followers</span>
               </div>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -67,9 +67,8 @@ const Home = () => {
       <section className="py-16">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-3xl md:text-4xl font-bold">Recent Posts</h2>
-          <a
+          <Link
             href="/blog"
-            rel="prefetch"
             className="text-primary-500 dark:text-primary-400 px-4 py-2 rounded-lg font-medium hover:bg-primary-500/5 hover:underline inline-flex items-center gap-2"
           >
             See All
@@ -87,7 +86,7 @@ const Home = () => {
                 d="M8.25 4.5l7.5 7.5-7.5 7.5"
               ></path>
             </svg>
-          </a>
+          </Link>
         </div>
         <div className="grid gap-4 lg:grid-cols-2 lg:gap-6">
           {recentPosts.map((post) => (

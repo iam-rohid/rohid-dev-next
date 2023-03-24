@@ -1,5 +1,6 @@
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
+import Link from "next/link";
 import { useMemo } from "react";
 
 const Footer = () => {
@@ -35,13 +36,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {recentPosts.map((post) => (
                 <li key={post._id}>
-                  <a
-                    rel="prefetch"
+                  <Link
                     className="hover:text-gray-500 dark:hover:text-gray-400"
                     href={`blog/${post.slug}`}
                   >
                     {post.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -52,29 +52,32 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   className="hover:text-gray-500 dark:hover:text-gray-400"
                   href="/contact"
-                  rel="prefetch"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
+                  target="_blank"
+                  rel="nofollow"
                   className="hover:text-gray-500 dark:hover:text-gray-400"
                   href="https://twitter.com/rohiddev"
                 >
                   Twitter
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
+                  target="_blank"
+                  rel="nofollow"
                   className="hover:text-gray-500 dark:hover:text-gray-400"
                   href="https://instagram.com/rohiddev"
                 >
                   Instagram
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

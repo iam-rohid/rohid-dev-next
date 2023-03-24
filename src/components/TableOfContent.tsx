@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import Link from "next/link";
 
 const TableOfContent = ({
   headings,
@@ -61,7 +62,7 @@ const TableOfContent = ({
       <ul className="py-2">
         {headings.map((heading) => (
           <li key={heading.slug}>
-            <a
+            <Link
               href={`/blog/${slug}#${heading.slug}`}
               className={clsx(
                 "flex h-10 items-center truncate px-4 hover:underline",
@@ -74,7 +75,7 @@ const TableOfContent = ({
               }}
             >
               <p className="flex-1 truncate">{heading.text}</p>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
