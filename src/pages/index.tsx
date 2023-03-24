@@ -1,24 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
 import BlogCard from "@/components/BlogCard";
+import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
 import TwitterIcon from "@/components/icons/TwitterIcon";
 import { TWITTER_HANDLE } from "@/data/constants";
-import { allPosts } from "contentlayer/generated";
+import { allPosts, Post } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { useMemo } from "react";
+import { FC } from "react";
 
-const Home = () => {
-  const recentPosts = useMemo(
-    () =>
-      allPosts
-        .sort((a, b) => {
-          return compareDesc(new Date(a.publishDate), new Date(b.publishDate));
-        })
-        .slice(0, 4),
-    []
-  );
+type Props = {
+  recentPosts: Post[];
+};
 
+const Home: FC<Props> = ({ recentPosts }) => {
   return (
     <main className="container mx-auto px-4 lg:px-8 xl:max-w-screen-xl">
       <Head>
@@ -80,20 +76,7 @@ const Home = () => {
             className="text-primary-500 dark:text-primary-400 px-4 py-2 rounded-lg font-medium hover:bg-primary-500/5 hover:underline inline-flex items-center gap-2"
           >
             See All
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 -mr-2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              ></path>
-            </svg>
+            <ArrowRightIcon className="-ml-2 text-2xl" />
           </Link>
         </div>
         <div className="grid gap-4 lg:grid-cols-2 lg:gap-6">
@@ -107,3 +90,16 @@ const Home = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps<Props> = () => {
+  const recentPosts = allPosts
+    .sort((a, b) => {
+      return compareDesc(new Date(a.publishDate), new Date(b.publishDate));
+    })
+    .slice(0, 4);
+  return {
+    props: {
+      recentPosts,
+    },
+  };
+};
