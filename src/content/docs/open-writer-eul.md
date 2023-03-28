@@ -1,11 +1,11 @@
 ---
-slug: writekit-eul
+slug: open-writer-eul
 title: End User License Agreement
 createdAt: 2023-03-26
 updatedAt: 2023-03-26
 ---
 
-This End User License Agreement (“Agreement”) is a legal agreement between you (“You” or “End User”) and Playense (“Publisher”) regarding your use of the application “WriteKit” (“App”) created and developed by Md. Rohidul Islam (“Developer”).
+This End User License Agreement (“Agreement”) is a legal agreement between you (“You” or “End User”) and Playense (“Publisher”) regarding your use of the application “Open Writer” (“App”) created and developed by Md. Rohidul Islam (“Developer”).
 
 By downloading, accessing or using the App, you acknowledge that you have read, understood and agreed to be bound by the terms and conditions of this Agreement. If you do not agree to the terms of this Agreement, you are not authorized to use the App.
 

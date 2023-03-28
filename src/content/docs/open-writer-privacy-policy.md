@@ -1,11 +1,11 @@
 ---
-slug: writekit-privacy-policy
-title: WriteKit Privacy Policy
+slug: open-writer-privacy-policy
+title: Open Writer Privacy Policy
 createdAt: 2023-03-26
 updatedAt: 2023-03-26
 ---
 
-This Privacy Policy applies to [WriteKit] (the “App”), an app developed by [Md. Rohidul Islam] (the “Developer”) and published by [Playense] (the “Publisher”).
+This Privacy Policy applies to [Open Writer] (the “App”), an app developed by [Md. Rohidul Islam] (the “Developer”) and published by [Playense] (the “Publisher”).
 
 This Privacy Policy covers the information that the App collects, how the App uses and discloses the information, and the choices available to users regarding the collection, use and disclosure of the information.
 
