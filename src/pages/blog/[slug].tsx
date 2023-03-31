@@ -3,18 +3,24 @@ import { allPosts, Post } from "contentlayer/generated";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { FC } from "react";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import BlogStats from "@/components/BlogStats";
+import { format } from "date-fns";
 
 type Props = {
   post: Post;
 };
-const Post: FC<Props> = ({ post: { title, description, body, slug } }) => {
+const Post: FC<Props> = ({
+  post: { title, description, body, publishDate },
+}) => {
   const MDXContent = useMDXComponent(body.code);
 
   return (
     <main>
       <div className="container mx-auto px-4 lg:px-8 xl:max-w-screen-xl">
-        <PageHeader title={title} description={description} />
+        <PageHeader title={title} description={description}>
+          <p className="mt-4 text-md text-gray-600 dark:text-gray-400">
+            Published at {format(new Date(publishDate), "MMMM dd, yyy")}
+          </p>
+        </PageHeader>
 
         <div className="my-16 flex lg:gap-8">
           <div className="flex-1 overflow-hidden">
@@ -23,7 +29,6 @@ const Post: FC<Props> = ({ post: { title, description, body, slug } }) => {
             </div>
           </div>
         </div>
-        <BlogStats slug={slug} title={title} description={description} />
       </div>
     </main>
   );

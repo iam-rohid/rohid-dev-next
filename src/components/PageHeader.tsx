@@ -1,12 +1,19 @@
 import Head from "next/head";
+import { ReactNode } from "react";
 
 export type PageHeaderProps = {
   title: string;
   description: string;
   category?: string;
+  children?: ReactNode;
 };
 
-const PageHeader = ({ title, description, category }: PageHeaderProps) => {
+const PageHeader = ({
+  title,
+  description,
+  category,
+  children,
+}: PageHeaderProps) => {
   return (
     <header className="my-12 md:my-16">
       <Head>
@@ -25,6 +32,7 @@ const PageHeader = ({ title, description, category }: PageHeaderProps) => {
       <p className="mt-4 font-medium text-gray-600 dark:text-gray-400 md:text-lg">
         {description}
       </p>
+      {children}
     </header>
   );
 };

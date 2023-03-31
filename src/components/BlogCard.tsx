@@ -1,8 +1,6 @@
 import { Post } from "contentlayer/generated";
 import { format } from "date-fns";
 import Link from "next/link";
-import EyeIcon from "./icons/EyeIcon";
-import ShareIcon from "./icons/ShareIcon";
 
 const BlogCard = ({ post }: { post: Post }) => {
   const viewCount = 0;
@@ -13,24 +11,13 @@ const BlogCard = ({ post }: { post: Post }) => {
       href={`/blog/${post.slug}`}
       className="flex flex-col rounded-xl border border-gray-900/10 p-6 hover:border-gray-900/20 dark:border-gray-50/10 dark:hover:border-gray-50/20"
     >
-      <p className="mb-1 text-sm text-gray-600 dark:text-gray-400">
+      <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {format(new Date(post.publishDate), "MMMM dd, yyy")}
       </p>
       <h3 className="text-2xl font-semibold line-clamp-2">{post.title}</h3>
-      <p className="my-4 text-gray-600 line-clamp-2 dark:text-gray-400">
+      <p className="mt-2 text-gray-600 line-clamp-2 dark:text-gray-400">
         {post.description}
       </p>
-      <div className="mt-auto flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-        <div className="inline-flex items-center gap-2">
-          <EyeIcon className="text-xl" />
-          {viewCount} Views
-        </div>
-        <span> •</span>
-        <div className="inline-flex items-center gap-2">
-          <ShareIcon className="text-xl" />
-          {shareCount} Shares
-        </div>
-      </div>
     </Link>
   );
 };
