@@ -3,11 +3,12 @@ import { allPosts, Post } from "contentlayer/generated";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { FC } from "react";
 import { useMDXComponent } from "next-contentlayer/hooks";
+import BlogStats from "@/components/BlogStats";
 
 type Props = {
   post: Post;
 };
-const Post: FC<Props> = ({ post: { title, description, body } }) => {
+const Post: FC<Props> = ({ post: { title, description, body, slug } }) => {
   const MDXContent = useMDXComponent(body.code);
 
   return (
@@ -22,6 +23,7 @@ const Post: FC<Props> = ({ post: { title, description, body } }) => {
             </div>
           </div>
         </div>
+        <BlogStats slug={slug} title={title} description={description} />
       </div>
     </main>
   );

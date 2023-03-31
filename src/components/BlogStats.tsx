@@ -92,6 +92,8 @@ const BlogStats = ({
   }, [slug]);
 
   const tweetUrl = useMemo(() => {
+    if (typeof window === "undefined")
+      return `http://twitter.com/${TWITTER_HANDLE}`;
     const url = new URL(`https://twitter.com/intent/tweet`);
     url.searchParams.set("text", `${title}\n\nby @${TWITTER_HANDLE}`);
     url.searchParams.set("url", location.href);
@@ -249,8 +251,13 @@ const BlogStats = ({
 
   return (
     <div ref={cardRef} className="flex h-28 w-full">
-      <div className={clsx("w-full", stick ? "fixed bottom-8" : "mb-8")}>
-        <div className="container mx-auto flex h-full px-4 lg:gap-8 lg:px-8 xl:max-w-screen-xl">
+      <div
+        className={clsx(
+          "w-full",
+          stick ? "fixed left-0 right-0 bottom-8" : "mb-8"
+        )}
+      >
+        <div className="container mx-auto flex h-full px-4 lg:gap-8 lg:px-8 xl:max-w-xl">
           <div className="flex flex-1 items-center justify-center">
             <div
               className={clsx(
@@ -279,7 +286,7 @@ const BlogStats = ({
               </button>
             </div>
           </div>
-          <div className="w-72 max-lg:hidden"></div>
+          {/* <div className="w-72 max-lg:hidden"></div> */}
         </div>
       </div>
     </div>
