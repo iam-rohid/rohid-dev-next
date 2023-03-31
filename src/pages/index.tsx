@@ -55,7 +55,7 @@ const Home: FC<Props> = ({ recentPosts }) => {
               className="absolute inset-0 rounded-full object-cover"
             />
 
-            <Link
+            {/* <Link
               onClick={() => trackLinkClick("Twitter Follower Counter")}
               href={`https://twitter.com/${TWITTER_HANDLE}`}
               target="_blank"
@@ -64,9 +64,11 @@ const Home: FC<Props> = ({ recentPosts }) => {
               <div className="-mb-1.5 mt-1 h-3 w-3 rotate-45 border-t border-l border-gray-900/10 bg-white dark:border-gray-50/10 dark:bg-gray-900" />
               <div className="flex items-center gap-2 rounded-lg border border-gray-900/10 bg-white px-2.5 py-2 uppercase shadow-lg dark:border-gray-50/10 dark:bg-gray-900 text-gray-600 dark:text-gray-300">
                 <TwitterIcon className="text-xl fill-gray-600 dark:fill-gray-300" />
-                <span className="whitespace-nowrap text-sm">54 Followers</span>
+                <span className="whitespace-nowrap text-sm">
+                  220~ Followers
+                </span>
               </div>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
