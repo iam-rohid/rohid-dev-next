@@ -1,11 +1,10 @@
 import { INSTAGRAM_HANDLE, MAIN_NEMU, TWITTER_HANDLE } from "@/data/constants";
-import { trackLinkClick } from "@/utils/tracking";
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";
-import HeaderVerticalSeparator from "./HeaderVerticalSeparator";
 import ThemeToggle from "./ThemeToggle";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import TwitterIcon from "@/components/icons/TwitterIcon";
+import clsx from "clsx";
 
 const Header = () => {
   return (
@@ -57,6 +56,7 @@ const Header = () => {
             <InstagramIcon />
           </Link>
 
+          <HeaderVerticalSeparator className="md:hidden" />
           <HamburgerMenu />
         </div>
       </div>
@@ -65,3 +65,13 @@ const Header = () => {
 };
 
 export default Header;
+
+const HeaderVerticalSeparator = ({
+  className: className,
+}: {
+  className?: string;
+}) => (
+  <div
+    className={clsx("h-5 w-px bg-gray-900/10 dark:bg-gray-100/10", className)}
+  />
+);
