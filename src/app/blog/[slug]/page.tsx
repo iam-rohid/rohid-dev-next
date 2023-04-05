@@ -1,16 +1,37 @@
 import PageHeader from "@/components/PageHeader";
-import { allPosts, Post } from "contentlayer/generated";
-import { GetStaticProps, GetStaticPaths } from "next";
-import { FC } from "react";
+import { allPosts } from "contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { format } from "date-fns";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
-type Props = {
-  post: Post;
-};
-const Post: FC<Props> = ({
-  post: { title, description, body, publishDate },
-}) => {
+type Props = { params: { slug: string } };
+
+export async function generateStaticParams() {
+  return allPosts.map((item) => ({
+    slug: item.slug,
+  }));
+}
+
+export async function generateMetadata({
+  params: { slug },
+}: Props): Promise<Metadata> {
+  const post = allPosts.find((item) => item.slug === slug);
+
+  return {
+    title: post?.title,
+    description: post?.description,
+  };
+}
+
+const PostPage = ({ params: { slug } }: Props) => {
+  const post = allPosts.find((item) => item.slug === slug);
+
+  if (!post) {
+    notFound();
+  }
+  const { body, title, description, publishDate } = post;
+
   const MDXContent = useMDXComponent(body.code);
 
   return (
@@ -34,32 +55,4 @@ const Post: FC<Props> = ({
   );
 };
 
-export default Post;
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = allPosts.map((post) => ({
-    params: {
-      slug: post.slug,
-    },
-  }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps<Props> = ({ params }) => {
-  const post = allPosts.find((post) => post.slug === params?.slug);
-  if (!post) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      post,
-    },
-  };
-};
+export default PostPage;

@@ -1,5 +1,9 @@
 import PageLayout from "@/components/layouts/PageLayout";
 
+export const metadata = {
+  title: "Snippets",
+};
+
 const Snippets = () => {
   return (
     <PageLayout

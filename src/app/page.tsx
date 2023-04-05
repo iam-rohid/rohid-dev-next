@@ -1,21 +1,18 @@
-/* eslint-disable @next/next/no-img-element */
 import BlogCard from "@/components/BlogCard";
 import ArrowRightIcon from "@/components/icons/ArrowRightIcon";
-import TwitterIcon from "@/components/icons/TwitterIcon";
-import { TWITTER_HANDLE } from "@/data/constants";
-import { trackLinkClick } from "@/utils/tracking";
-import { allPosts, Post } from "contentlayer/generated";
+import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
-import { GetStaticProps } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
 
-type Props = {
-  recentPosts: Post[];
-};
+const HomePage = () => {
+  const recentPosts = allPosts
+    .sort((a, b) => {
+      return compareDesc(new Date(a.publishDate), new Date(b.publishDate));
+    })
+    .slice(0, 4);
 
-const Home: FC<Props> = ({ recentPosts }) => {
   return (
     <main className="container mx-auto px-4 lg:px-8 xl:max-w-screen-xl">
       <Head>
@@ -40,7 +37,6 @@ const Home: FC<Props> = ({ recentPosts }) => {
           <div className="mt-6 flex items-center gap-8 max-lg:justify-center md:mt-8">
             <Link
               href="/contact"
-              onClick={() => trackLinkClick("Get in Touch")}
               className="rounded-xl text-lg bg-primary-500 hover:bg-primary-600 px-6 py-3 font-medium text-white transition-all hover:shadow-sm duration-300"
             >
               Get in Touch
@@ -48,11 +44,13 @@ const Home: FC<Props> = ({ recentPosts }) => {
           </div>
         </div>
         <div className="flex items-center justify-center">
-          <div className="relative h-48 w-48 md:h-64 md:w-64 lg:h-80 lg:w-80">
-            <img
-              src="https://pbs.twimg.com/profile_images/1636007025829359616/a-jQHIUc_400x400.jpg"
+          <div className="relative h-48 md:h-64 lg:h-80 aspect-square">
+            <Image
+              src="/images/avatar.JPG"
               alt="Rohid's profile"
-              className="absolute inset-0 rounded-full object-cover"
+              width={768}
+              height={768}
+              className="absolute w-full h-full rounded-full object-cover"
             />
 
             {/* <Link
@@ -94,17 +92,4 @@ const Home: FC<Props> = ({ recentPosts }) => {
   );
 };
 
-export default Home;
-
-export const getStaticProps: GetStaticProps<Props> = () => {
-  const recentPosts = allPosts
-    .sort((a, b) => {
-      return compareDesc(new Date(a.publishDate), new Date(b.publishDate));
-    })
-    .slice(0, 4);
-  return {
-    props: {
-      recentPosts,
-    },
-  };
-};
+export default HomePage;
