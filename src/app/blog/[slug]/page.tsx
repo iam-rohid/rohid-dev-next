@@ -4,6 +4,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import { format } from "date-fns";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { TWITTER_HANDLE } from "@/data/constants";
 
 type Props = { params: { slug: string } };
 
@@ -18,9 +19,39 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const post = allPosts.find((item) => item.slug === slug);
 
+  if (!post) {
+    return {};
+  }
+
+  const { title, description, publishDate: publishedTime, coverImage } = post;
+
+  const ogImage = coverImage
+    ? coverImage.startsWith("/")
+      ? `https://rohid.dev${coverImage}`
+      : coverImage
+    : `https://rohid.dev/api/og?title=${title}`;
   return {
-    title: post?.title,
-    description: post?.description,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime,
+      url: `https://rohid.dev/blog/${slug}`,
+      images: [
+        {
+          url: ogImage,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+      creator: `@${TWITTER_HANDLE}`,
+    },
   };
 }
 
