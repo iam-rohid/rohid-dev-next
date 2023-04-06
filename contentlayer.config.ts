@@ -23,6 +23,10 @@ export const Post = defineDocumentType(() => ({
       type: "boolean",
       default: false,
     },
+    coverImage: {
+      type: "string",
+      required: true,
+    },
   },
   computedFields: {
     slug: {
