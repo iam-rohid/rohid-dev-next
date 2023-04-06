@@ -9,6 +9,7 @@ import {
   INIT_THEME_CODE,
 } from "@/utils/constants";
 import Footer from "./Footer";
+import Analytics from "./Analytics";
 
 export const metadata = DEFAULT_METADATA;
 
@@ -24,6 +25,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

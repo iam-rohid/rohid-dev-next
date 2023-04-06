@@ -8,13 +8,8 @@ export const ANALYTICS_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_T
 
 export const INIT_GTAG_CODE = `
 window.dataLayer = window.dataLayer || [];
-function gtag() {
-  dataLayer.push(arguments);
-}
+function gtag() {dataLayer.push(arguments);}
 gtag('js', new Date());
-
-gtag('config', '${GA_TRACKING_ID}');
-console.log("Init gtag");
 `;
 
 export const INIT_THEME_CODE = `
