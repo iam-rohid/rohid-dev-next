@@ -1,5 +1,4 @@
 ---
-slug: open-writer-eul
 title: End User License Agreement
 createdAt: 2023-03-26
 updatedAt: 2023-03-26

@@ -7,10 +7,6 @@ export const Post = defineDocumentType(() => ({
   filePathPattern: `posts/**/*.mdx`,
   contentType: "mdx",
   fields: {
-    slug: {
-      type: "string",
-      required: true,
-    },
     title: {
       type: "string",
       required: true,
@@ -28,16 +24,21 @@ export const Post = defineDocumentType(() => ({
       default: false,
     },
   },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (post) => {
+        const segments = post._raw.flattenedPath.split("/");
+        return segments[segments.length - 1];
+      },
+    },
+  },
 }));
 export const Page = defineDocumentType(() => ({
   name: "Page",
   filePathPattern: `pages/**/*.mdx`,
   contentType: "mdx",
   fields: {
-    slug: {
-      type: "string",
-      required: true,
-    },
     title: {
       type: "string",
       required: true,
@@ -51,15 +52,20 @@ export const Page = defineDocumentType(() => ({
       default: false,
     },
   },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (post) => {
+        const segments = post._raw.flattenedPath.split("/");
+        return segments[segments.length - 1];
+      },
+    },
+  },
 }));
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
   filePathPattern: `docs/**/*.md`,
   fields: {
-    slug: {
-      type: "string",
-      required: true,
-    },
     title: {
       type: "string",
       required: true,
@@ -71,6 +77,15 @@ export const Doc = defineDocumentType(() => ({
     updatedAt: {
       type: "date",
       required: true,
+    },
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (post) => {
+        const segments = post._raw.flattenedPath.split("/");
+        return segments[segments.length - 1];
+      },
     },
   },
 }));

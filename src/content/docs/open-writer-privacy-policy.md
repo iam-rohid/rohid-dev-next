@@ -1,5 +1,4 @@
 ---
-slug: open-writer-privacy-policy
 title: Open Writer Privacy Policy
 createdAt: 2023-03-26
 updatedAt: 2023-03-26
